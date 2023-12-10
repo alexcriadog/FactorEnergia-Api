@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stack_overflow_models', function (Blueprint $table) {
+        Schema::create('stack_overflow_queries', function (Blueprint $table) {
             $table->id();
             $table->text('tagged');
-            $table->date('to_date');
-            $table->date('from_date');
+            $table->bigInteger('to_date')->nullable();
+            $table->bigInteger('from_date')->nullable();
+            $table->json('result');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stack_overflow_models');
+        Schema::dropIfExists('stack_overflow_queries');
     }
 };
